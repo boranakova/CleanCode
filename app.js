@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -24,3 +25,24 @@ app.get('/post',(req,res) =>{
 app.get('/about',(req,res) =>{
   res.render('about');
 })
+=======
+const express = require("express");
+
+const app = express();
+
+const port = 3000;
+
+app.get('/', (req,res) => {
+  const blog = {
+    id: 1,
+    title: "Blog title",
+    description: "Blog description",
+  }
+  res.send(blog);
+});
+
+app.listen(port, () => {
+  console.log(`Port ${port} çalisiyor.`);
+  
+});
+>>>>>>> 9a07dd23fbd9e2d31888d1d69bdac50e96862cb3
