@@ -23,19 +23,24 @@ app.listen(port, () => {
 
 app.get("/", async (req, res) => {
   const posts = await Posts.find({});
-  res.render('index',{posts});
+  res.render("index", { posts });
 });
 app.get("/add_post", (req, res) => {
   res.render("add_post");
 });
-app.get("/post", (req, res) => {
-  res.render("post");
-});
+
 app.get("/about", (req, res) => {
   res.render("about");
 });
 
-app.post("/posts", async (req, res) => {
+app.get("/post/:id", async (req, res) => {
+  const post = await Posts.findById(req.params.id);
+  res.render("post", {
+    post,
+  });
+});
+
+app.post("/post", async (req, res) => {
   await Posts.create(req.body);
   res.redirect("/");
 });
